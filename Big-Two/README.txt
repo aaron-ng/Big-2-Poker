@@ -11,7 +11,7 @@ Big 2 is a Chinese card game that is often played with a gambling rules or certa
 
 This game has a variety of different rule sets, each province in China most likely has its own rule set. The one coded is based on the rule set of Hong Kong and is the rule set that I play by. 
 
-The base model has currently been completed. The end goal will to have three different bot levels (easy, medium, hard), as well as a simple GUI. 
+The base model has currently been completed. The end goal will be to have three different bot levels (easy, medium, hard), as well as a simple GUI. 
 
 ======================================
 How the game is played.
@@ -34,17 +34,17 @@ A player can play:
 	(a single card and the next person must play a higher single card)
 
 	- pairs 
-	(a pair of cards is two cards with the same value, the next person must play a 		pair higher then the previous played pair)
+	(a pair of cards is two cards with the same value, the next person must play a pair higher then the previous played pair)
 
 	- triples 
-	(similar to pairs but instead of two cards with the same value, there is now three 	cards of the same value)
+	(similar to pairs but instead of two cards with the same value, there is now three cards of the same value)
 
 	- poker hands (Sets of 5)
-	(A poker hand can be though as, straight, flush, full house, quads, straight 		flush, royal flush. Each consecutive player must play a higher hand, same rules to 	poker apply.)
+	(A poker hand can be though as, straight, flush, full house, quads, straight flush, royal flush. Each consecutive player must play a higher hand, same rules to poker apply.)
 
 Starting Player:
 The starting player is determined by the person holding the 3 of diamonds. He can play any type of hand (singles, pairs, triples, poker hands) as long as the 3 of diamonds is played. 
 
-Gambling rules:
+Payout rules:
 Not implemented yet. The rules will come when implemented. 
 
