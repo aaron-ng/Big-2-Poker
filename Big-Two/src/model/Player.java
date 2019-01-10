@@ -52,17 +52,16 @@ public class Player {
    * @param ht represents the hand type.
    * @return the hand.
    */
-  public Hand generateHand(int[] givenCards, HandType ht) {
+  public Hand generateHand(ArrayList<Integer> givenCards, HandType ht) {
 
     ArrayList<Card> handCards = new ArrayList<>();
 
-    for (int i = 0; i < givenCards.length; i++) {
+    for (int i = 0; i < givenCards.size(); i++) {
 
-      handCards.add(this.holdingHand.get(givenCards[i]));
+      handCards.add(this.holdingHand.get(givenCards.get(i)));
 
     }
     return new Hand(handCards, ht);
-
   }
 
 

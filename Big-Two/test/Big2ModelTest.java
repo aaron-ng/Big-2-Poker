@@ -33,7 +33,6 @@ public class Big2ModelTest {
     dud = new Big2ModelImpl(lop);
     basicDeckNoShuffle = dud.getDeck();
 
-
   }
 
 
@@ -62,7 +61,7 @@ public class Big2ModelTest {
             "\n" +
             "Round 1: \n" +
             "\n" +
-            "Current turn: Aaron", dud.printState());
+            "Current turn: Aaron\n", dud.printState());
 
   }
 
@@ -70,8 +69,8 @@ public class Big2ModelTest {
   public void testGame() {
     this.init();
 
-    int[] h1LOC = new int[1];
-    h1LOC[0] = 0;
+    ArrayList<Integer> h1LOC = new ArrayList<>();
+    h1LOC.add(0);
 
     dud.startGame(basicDeckNoShuffle, 1);
 
@@ -95,7 +94,7 @@ public class Big2ModelTest {
             "Round 1: \n" +
             "(singleCard, Cards: ♦2)\n" +
             "\n" +
-            "Current turn: Nicky", dud.printState());
+            "Current turn: Nicky\n", dud.printState());
 
     dud.pass("Nicky");
 
@@ -114,7 +113,7 @@ public class Big2ModelTest {
             "Round 1: \n" +
             "(singleCard, Cards: ♦2)\n" +
             "\n" +
-            "Current turn: Jeff", dud.printState());
+            "Current turn: Jeff\n", dud.printState());
 
     dud.pass("Jeff");
 
@@ -137,21 +136,20 @@ public class Big2ModelTest {
             "(singleCard, Cards: ♦2)\n" +
             "Round 2: \n" +
             "\n" +
-            "Current turn: Aaron", dud.printState());
+            "Current turn: Aaron\n", dud.printState());
 
-    int[] h2LOC = new int[5];
-    h2LOC[0] = 1;
-    h2LOC[1] = 11;
-    h2LOC[2] = 8;
-    h2LOC[3] = 5;
-    h2LOC[4] = 4;
+    ArrayList<Integer> h2LOC = new ArrayList<>();
+    h2LOC.add(1);
+    h2LOC.add(11);
+    h2LOC.add(8);
+    h2LOC.add(5);
+    h2LOC.add(4);
 
     Hand h2 = p2.generateHand(h2LOC, HandType.straight);
 
     dud.move("Aaron", h2);
 
-    Assert.assertEquals("model.Player type: Human, model.Player name: Bob, Positing at table: 0, " +
-            "Is Passing: false\n" +
+    Assert.assertEquals("model.Player type: Human, model.Player name: Bob, Positing at table: 0, Is Passing: false\n" +
             "Cards currently holding: ♦A♦5♦9♦K♣4♣8♣Q♥3♥7♥J♠2♠6♠10\n" +
             "\n" +
             "model.Player type: Human, model.Player name: Aaron, Positing at table: 1, Is Passing: false\n" +
@@ -166,23 +164,23 @@ public class Big2ModelTest {
             "Round 1: \n" +
             "(singleCard, Cards: ♦2)\n" +
             "Round 2: \n" +
-            "(straight, Cards: ♦10♠J♥Q♣K♣9)\n" +
+            "(straight, Cards: ♣9♦10♠J♥Q♣K)\n" +
             "\n" +
-            "Current turn: Nicky", dud.printState());
+            "Current turn: Nicky\n", dud.printState());
 
-    int[] h3LOC = new int[5];
-    h3LOC[0] = 5;
-    h3LOC[1] = 2;
-    h3LOC[2] = 12;
-    h3LOC[3] = 9;
-    h3LOC[4] = 6;
+    ArrayList<Integer> h3LOC = new ArrayList<>();
+    h3LOC.add(5);
+    h3LOC.add(2);
+    h3LOC.add(12);
+    h3LOC.add(9);
+    h3LOC.add(6);
+
 
     Hand h3 = p3.generateHand(h3LOC, HandType.straight);
 
     dud.move("Nicky", h3);
 
-    Assert.assertEquals("model.Player type: Human, model.Player name: Bob, Positing at table: 0," +
-            " Is Passing: false\n" +
+    Assert.assertEquals("model.Player type: Human, model.Player name: Bob, Positing at table: 0, Is Passing: false\n" +
             "Cards currently holding: ♦A♦5♦9♦K♣4♣8♣Q♥3♥7♥J♠2♠6♠10\n" +
             "\n" +
             "model.Player type: Human, model.Player name: Aaron, Positing at table: 1, Is Passing: false\n" +
@@ -197,10 +195,10 @@ public class Big2ModelTest {
             "Round 1: \n" +
             "(singleCard, Cards: ♦2)\n" +
             "Round 2: \n" +
-            "(straight, Cards: ♦10♠J♥Q♣K♣9)\n" +
+            "(straight, Cards: ♣9♦10♠J♥Q♣K)\n" +
             "(straight, Cards: ♣10♦J♠Q♥K♥A)\n" +
             "\n" +
-            "Current turn: Nicky", dud.printState());
+            "Current turn: Jeff\n", dud.printState());
 
 
   }
@@ -211,8 +209,7 @@ public class Big2ModelTest {
 
     this.init();
 
-    int[] h1LOC = new int[1];
-    h1LOC[0] = 0;
+    ArrayList<Integer> h1LOC = new ArrayList<>();
 
     dud.startGame(basicDeckNoShuffle, 1);
 

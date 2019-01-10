@@ -96,6 +96,7 @@ public class Big2ModelImpl implements IBig2Model {
       for (Card c: h.getHand()) {
         this.players[givenPlayer].getHoldingHand().remove(c);
       }
+
     } else {
       throw new IllegalArgumentException("Cannot move card.");
     }
@@ -103,7 +104,14 @@ public class Big2ModelImpl implements IBig2Model {
 
     // Check if the player has any card left, if he has none left then set isGameOver to true.
     if (this.players[givenPlayer].getHoldingHand().isEmpty()) {
+      this.currentPlayer = givenPlayer;
       this.isGameOver = true;
+    }
+
+    if (this.currentPlayer == 3) {
+      this.currentPlayer = 0;
+    } else {
+      this.currentPlayer++;
     }
 
   }
@@ -215,6 +223,7 @@ public class Big2ModelImpl implements IBig2Model {
   @Override
   public void startGame(ArrayList<Card> deck, int startingPlayer) {
 
+
     // Dealing cards
     int currPlayer = 0;
 
@@ -232,8 +241,29 @@ public class Big2ModelImpl implements IBig2Model {
       }
     }
 
+    // If the given starting player is -1, means that the starting player is unknown
+    if (startingPlayer == -1) {
+      startingPlayer = startingPlayer();
+    }
+
     this.currentPlayer = startingPlayer;
 
+  }
+
+  // Current Implementation person with 3 of diamonds start
+  @Override
+  public int startingPlayer() {
+
+    for(int i = 0; i < players.length; i++) {
+      for (Card currCard: players[i].getHoldingHand()) {
+        if (currCard.getCv().equals(CardValue.three) && currCard.getCs().equals(CardSuite.Diamond)) {
+          return i;
+        }
+      }
+    }
+
+    // If cannot find three of diamonds throw error
+    throw new IllegalArgumentException("Cannot find 3 of diamonds");
   }
 
   @Override
@@ -247,21 +277,19 @@ public class Big2ModelImpl implements IBig2Model {
   }
 
   @Override
+  public int getCurrentPlayer() {
+    return this.currentPlayer;
+  }
+
+  @Override
   public ArrayList<Hand> getMainPile() {
     return this.mainPile;
   }
 
   @Override
-  public String printState() {
-
+  public String printMainPile() {
     String finalResult = "";
 
-    // Printing player information
-    for (Player p: this.players) {
-      finalResult = finalResult + p.cardsAsString() + "\n";
-    }
-
-    // Printing main pile
     int roundCount = 1;
 
     for (Hand h: this.mainPile) {
@@ -274,8 +302,23 @@ public class Big2ModelImpl implements IBig2Model {
       finalResult = finalResult + h.toString() + "\n";
     }
 
+    return finalResult;
+  }
+
+  @Override
+  public String printState() {
+
+    String finalResult = "";
+
+    // Printing player information
+    for (Player p: this.players) {
+      finalResult = finalResult + p.cardsAsString() + "\n";
+    }
+
+    finalResult = finalResult + printMainPile();
+
     // Print out who's turn it is right now.
-    finalResult = finalResult + "\nCurrent turn: " + this.players[this.currentPlayer].getPlayerName();
+    finalResult = finalResult + "\nCurrent turn: " + this.players[this.currentPlayer].getPlayerName() + "\n";
 
     return finalResult;
   }

@@ -31,6 +31,11 @@ public interface IBig2Model {
   void startGame(ArrayList<Card> deck, int startingPlayer);
 
   /**
+   * Get starting player
+   */
+  int startingPlayer();
+
+  /**
    * Sees if the game is over or not.
    * @return represents if the game is over.
    */
@@ -43,16 +48,28 @@ public interface IBig2Model {
   Player[] getPlayer();
 
   /**
+   * Get the current player
+   *
+   */
+  int getCurrentPlayer();
+
+  /**
    * Returns the mainPile.
    * @return the mainPile.
    */
   ArrayList<Hand> getMainPile();
 
   /**
+   * Prints the main pile only
+   */
+  String printMainPile();
+
+  /**
    * Prints the current state with all player hands and main pile.
    * @return the game state.
    */
   String printState();
+
 
 
 }
